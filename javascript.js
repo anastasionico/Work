@@ -25,7 +25,7 @@
     {/literal}
 {* ---------------- end mobile menu ----------------*}
 
-{* ------------------ javascript for the search bar -----------------------------*}
+{* ------------------ javascript for the search bar -----------------------------
     {literal}
     $(document).ready(function(){
                 var submitIcon = $('.searchbox-icon');
@@ -161,27 +161,45 @@
 
 
 /*============================== start search bar ===============================*/   
-     function hasClass(element, className) {
+    function hasClass(element, className) {
         return element.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(element.className);
     }
     
     function onSearch(){
         var searchbar = document.getElementById("searchbar");
         var authenticationDiv = document.getElementById("authentication-div");
+        var magnifierButton = document.getElementById("magnifierButton");
         var verify = hasClass(searchbar, 'searchbox-isOpen');
+        
         if(!verify){
             searchbar.className += " searchbox-isOpen";
-            authenticationDiv.style.display="none";
+            searchbar.focus();
+            authenticationDiv.className += " authenticationDiv-moved";
+            magnifierButton.className = " fa fa-1r fa-times";
+            setTimeout(function(){
+                if(searchbar.value =="" ){
+                    searchbar.className = "searchbox-input searchbox-input-getSmaller ";
+                    authenticationDiv.className = "grid-5 overflow float-r capitalize align-r mphide mlhide tphide tlhide fa-1r";
+                    magnifierButton.className = " fa fa-1r fa-search";
+                }
+            },3000);
         }else{
-            searchbar.className = "searchbox-input";
-            authenticationDiv.style.display="inline-block";
-        }
-    }  
-    function onSearchDelete(){
-        var form = document.getElementById("cntnt01moduleform_1");
-        form.reset();
-    }
         
+            searchbar.className = "searchbox-input searchbox-input-getSmaller ";
+            authenticationDiv.className = "grid-5 overflow float-r capitalize align-r mphide mlhide tphide tlhide fa-1r";
+            magnifierButton.className = " fa fa-1r fa-search";
+        }
+    } 
+
+
+
+    
+
+    
+    /*
+        set this functionf in the onSearch function
+    
+    
 /*============================== end search bar ===============================*/   
 
 

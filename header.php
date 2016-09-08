@@ -13,14 +13,21 @@
             <div id="container-nav" class="mgrid-24 grid-20ng">
                 <div class="align-r grid-24 margin-b-20 overflow" >
                     <div class="grid-1 float-r">
-                        <div class="inline-block float-r mphide mlhide">{search resultpage="search-results-2"}</div>
+                        <div class="inline-block float-r mphide mlhide">{search resultpage="search-results"}</div>
                     </div>
                     {*---------------- log in----------------*}
-                    <div id="authentication-div" class="grid-5 overflow float-r capitalize align-r mphide mlhide tphide tlhide fa-1r">
+                    <div id="authentication-div" class="grid-5 overflow float-r capitalize align-r mphide mlhide tphide tlhide fa-1r" style="">
+                        {if feu_smarty::get_current_username()}
+                        <span class="sm-font black inline-block">
+                            <a href="http://www.fipe.co.uk/1/ken/index.php/my-account">Hello, {feu_smarty::get_current_username()}
+                            </a>
+                        </span>
+                        {else}
                         <i class="fa fa-lock" aria-hidden="true"></i>
                         <span class="inline-block add-1  fa-1r">{cms_selflink page="log-in" text="log in"}</span>
                         <i class="fa fa-user" aria-hidden="true"></i>
                         <span class="inline-block  fa-1r">{cms_selflink page="sign-up" text="sign up"}</span>
+                        {/if}
                     </div>
                     {*---------------- log in----------------*}
                     <img  id="btn_login" class="dhide mphide mlhide" src="uploads/images/assets/btn_login.png"><img>
